@@ -9,7 +9,7 @@ import { MainStyled } from "./MainStyled";
 
 const getDataByCategory = async (category) => {
   const response = await getAllAdvByCategory(category);
-  if (response) {
+  if (response.data) {
     return Object.keys(response.data).map((key) => ({ id: key, ...response.data[key] }));
   }
   return [];

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { AdvFormStyled } from "./AdvFormStyled";
 import { createNewAdv } from "../../services/Api";
+
 const categories = ["phones", "laptops"];
 const initialState = { name: "", image: "", description: "", price: 0, isSale: false, category: categories[0] };
 
 class AdvForm extends Component {
   state = { ...initialState };
+
   onHandleChange = (event) => {
     const { name, value, checked, type } = event.target;
     if (type === "checkbox") {
@@ -19,12 +21,12 @@ class AdvForm extends Component {
     const response = await createNewAdv(this.state);
     this.props.addNewAdv({ ...this.state, id: response.data.name });
     this.setState({ ...initialState });
-    // console.log(`response`, response);
   };
+
   render() {
     const { name, image, description, price, isSale, category } = this.state;
     return (
-      <form onSubmit={this.onHandleSubmit}>
+      <AdvFormStyled onSubmit={this.onHandleSubmit} className="formAdv">
         <label>
           Наименование:
           <input type="text" name="name" value={name} onChange={this.onHandleChange} />
@@ -57,7 +59,7 @@ class AdvForm extends Component {
           </select>
         </label>
         <button type="submit">Add adv</button>
-      </form>
+      </AdvFormStyled>
     );
   }
 }

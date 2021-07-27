@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   height: 60px;
-  border-bottom: 3px solid ${(props) => props.colors.darkColors.main};
+  border-bottom: 1px solid ${(props) => props.colors.darkColors.main};
   background-color: ${(props) => props.colors.darkColors.primary};
   display: flex;
   align-items: center;
@@ -14,5 +14,10 @@ export const HeaderStyled = styled.header`
     font-size: 20px;
     color: ${(props) => props.colors.darkColors.main};
     text-transform: uppercase;
+  }
+  .burgerMenu {
+    fill: ${(props) => props.colors.darkColors.main};
+    width: 40px;
+    height: 40px;
   }
 `;
