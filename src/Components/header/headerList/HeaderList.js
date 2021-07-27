@@ -3,7 +3,7 @@ import mainRoutes from "../../../routes/mainRoutes";
 import colors from "../../../styles/colors";
 import { HeaderListStyled } from "./HeaderListStyled";
 
-const HeaderList = (language = "en") => {
+const HeaderList = ({ language = "en" }) => {
   return (
     <HeaderListStyled colors={colors}>
       {mainRoutes.map((item) => (

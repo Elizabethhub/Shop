@@ -14,7 +14,7 @@ const mainRoutes = [
       ru: "Продукты",
       ua: "Продукти",
     },
-    path: "/",
+    path: "/products",
     icon: "",
   },
   {
