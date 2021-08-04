@@ -40,7 +40,7 @@ export const HeaderListStyled = styled.ul`
     align-items: center;
     justify-content: space-between;
   }
-  .headerListItem {
+  .navigationListItem {
     margin-top: 10px;
     @media (min-width: 768px) {
       margin-top: 0;
@@ -52,10 +52,13 @@ export const HeaderListStyled = styled.ul`
       }
     }
   }
-  .headerListLink {
+  .navigationListItemAnchor {
     color: ${(props) => props.colors.darkColors.main};
     cursor: pointer;
     text-transform: uppercase;
     text-decoration: none;
+  }
+  .activeNavigationListItemAnchor {
+    color: ${(props) => props.colors.darkColors.active};
   }
 `;

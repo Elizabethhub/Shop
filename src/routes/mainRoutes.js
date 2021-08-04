@@ -1,3 +1,9 @@
+import HomePage from "../pages/HomePage";
+import ProductsPage from "../pages/ProductsPage";
+import CartPage from "../pages/CartPage";
+import AdminPage from "../pages/AdminPage";
+import AuthPage from "../pages/AuthPage";
+
 const mainRoutes = [
   {
     name: {
@@ -7,6 +13,8 @@ const mainRoutes = [
     },
     path: "/",
     icon: "",
+    component: HomePage,
+    exact: true,
   },
   {
     name: {
@@ -16,6 +24,8 @@ const mainRoutes = [
     },
     path: "/products",
     icon: "",
+    component: ProductsPage,
+    exact: false,
   },
   {
     name: {
@@ -25,6 +35,8 @@ const mainRoutes = [
     },
     path: "/cart",
     icon: "",
+    component: CartPage,
+    exact: true,
   },
   {
     name: {
@@ -34,6 +46,8 @@ const mainRoutes = [
     },
     path: "/register",
     icon: "",
+    component: AuthPage,
+    exact: true,
   },
   {
     name: {
@@ -43,6 +57,8 @@ const mainRoutes = [
     },
     path: "/admin",
     icon: "",
+    component: AdminPage,
+    exact: true,
   },
   {
     name: {
@@ -52,6 +68,8 @@ const mainRoutes = [
     },
     path: "/login",
     icon: "",
+    component: AuthPage,
+    exact: true,
   },
 ];
 export default mainRoutes;
