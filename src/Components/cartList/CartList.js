@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeFromCart } from "../../redux/cart/cartActions";
+import { createOrder, removeFromCart } from "../../redux/cart/cartActions";
+import { createNewOrder } from "../../services/Api";
 import CartListItem from "../cartListItem/CartListItem";
 
-const CartList = ({ cart, removeFromCart, removeAllFromCart }) => {
+const CartList = ({ cart, removeFromCart, createOrder }) => {
+  const removeAllFromCart = async () => {
+    await createNewOrder(cart);
+    createOrder();
+  };
   return (
     <>
       {cart.length ? (
@@ -28,4 +33,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart.items,
 });
 
-export default connect(mapStateToProps, { removeFromCart })(CartList);
+export default connect(mapStateToProps, { removeFromCart, createOrder })(CartList);

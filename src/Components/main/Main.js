@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { createOrder } from "../../redux/cart/cartActions";
 import mainRoutes from "../../routes/mainRoutes";
 // import data from "../../Data";
-import { getAllAdvByCategory } from "../../services/Api";
+import { createNewOrder, getAllAdvByCategory } from "../../services/Api";
 // import AdvForm from "../admin/AdvForm";
 // import CartList from "../cartList/CartList";
 // import ProductList from "../productList/ProductList";
@@ -51,6 +53,11 @@ class Main extends Component {
     this.setState({ cart: [] });
   };
 
+  createOrder = async (order) => {
+    await createNewOrder(order);
+    createOrder();
+  };
+
   render() {
     return (
       <MainStyled>
@@ -64,4 +71,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default connect(null, { createOrder })(Main);
