@@ -19,7 +19,7 @@ class AdvForm extends Component {
   onHandleSubmit = async (e) => {
     e.preventDefault();
     const response = await createNewAdv(this.state);
-    this.props.addNewAdv({ ...this.state, id: response.data.name });
+    // this.props.addNewAdv({ ...this.state, id: response.data.name });
     this.setState({ ...initialState });
   };
 

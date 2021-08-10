@@ -1,7 +1,15 @@
 import React from "react";
+import AuthForm from "../Components/auth/AuthForm";
+import Section from "../Components/section/Section";
 
 const AuthPage = () => {
-  return <h2>AuthPage</h2>;
+  return (
+    <>
+      <Section title={"AuthPage"}>
+        <AuthForm />
+      </Section>
+    </>
+  );
 };
 
 export default AuthPage;

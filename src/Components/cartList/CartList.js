@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createOrder, removeFromCart } from "../../redux/cart/cartActions";
+import { cartItemsSelector } from "../../redux/cart/cartSelectors";
 import { createNewOrder } from "../../services/Api";
 import CartListItem from "../cartListItem/CartListItem";
 
@@ -30,7 +31,8 @@ const CartList = ({ cart, removeFromCart, createOrder }) => {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.items,
+  // cart: state.cart.items,
+  cart: cartItemsSelector(state),
 });
 
 export default connect(mapStateToProps, { removeFromCart, createOrder })(CartList);

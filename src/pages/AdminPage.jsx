@@ -5,7 +5,9 @@ import Section from "../Components/section/Section";
 const AdminPage = () => {
   return (
     <>
-      <Section title="Администрирование">{/* <AdvForm addNewAdv={this.addNewAdv} /> */}</Section>
+      <Section title="Администрирование">
+        <AdvForm />
+      </Section>
     </>
   );
 };

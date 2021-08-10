@@ -6,8 +6,10 @@ import {
   getAllProducts,
   getLaptops,
   getPhones,
+  productsByCategory,
   resetError,
   setError,
+  setFilter,
   setLoader,
 } from "./productActions";
 
@@ -19,6 +21,11 @@ const productItemsReducer = createReducer(
       ...state,
       [payload.categorty]: state[payload.categorty].filter((item) => item.id !== payload.id),
     }),
+    [productsByCategory]: (state, { payload }) => {
+      if (payload.length) {
+        return { ...state, [payload[0].category]: payload };
+      }
+    },
     [getLaptops]: (state, { payload }) => ({
       ...state,
       laptops: payload,
@@ -78,10 +85,15 @@ const productErrorReducer = createReducer("", {
 //   return state;
 // };
 
+const productsFilterReducer = createReducer("", {
+  [setFilter]: (_, { payload }) => payload,
+});
+
 const productReducer = combineReducers({
   items: productItemsReducer,
   isLoading: productLoaderReducer,
   error: productErrorReducer,
+  filter: productsFilterReducer,
 });
 
 export default productReducer;

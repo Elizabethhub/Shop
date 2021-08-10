@@ -16,8 +16,21 @@ const getAllProducts = createAction("products/getAllProducts");
 const setLoader = createAction("products/setLoader");
 const setError = createAction("products/setError");
 const resetError = createAction("products/resetError");
+const productsByCategory = createAction("products/procuctsByCategory");
+const setFilter = createAction("product/setFilter");
 
-export { addProduct, deleteProduct, getLaptops, getPhones, getAllProducts, setLoader, setError, resetError };
+export {
+  productsByCategory,
+  addProduct,
+  deleteProduct,
+  getLaptops,
+  getPhones,
+  getAllProducts,
+  setLoader,
+  setError,
+  resetError,
+  setFilter,
+};
 
 // export const addProduct = (product) => ({
 //   type: ADD_PRODUCT,
