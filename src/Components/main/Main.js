@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { createOrder } from "../../redux/cart/cartActions";
 import mainRoutes from "../../routes/mainRoutes";
+import PrivateRoutes from "../../routes/PrivateRoutes";
+import PublicRoutes from "../../routes/PublicRoutes";
 // import data from "../../Data";
 // import { createNewOrder, getAllAdvByCategory } from "../../services/Api";
 // import AdvForm from "../admin/AdvForm";
@@ -62,13 +64,21 @@ class Main extends Component {
     return (
       <MainStyled>
         <Switch>
-          {mainRoutes.map((route) => (
-            <Route path={route.path} exact={route.exact} component={route.component} key={route.path} />
-          ))}
+          {mainRoutes.map((route) =>
+            route.isPrivate ? (
+              <PrivateRoutes key={route.path} {...route} isAuth={this.props.isAuth} />
+            ) : (
+              <PublicRoutes key={route.path} {...route} isAuth={this.props.isAuth} />
+            )
+          )}
         </Switch>
       </MainStyled>
     );
   }
 }
 
-export default connect(null, { createOrder })(Main);
+const mapStateToProps = (state) => {
+  return { isAuth: state.auth.idToken };
+};
+
+export default connect(mapStateToProps, { createOrder })(Main);

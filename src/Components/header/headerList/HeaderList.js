@@ -1,26 +1,29 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { logOut } from "../../../redux/auth/authActions";
 import mainRoutes from "../../../routes/mainRoutes";
 import colors from "../../../styles/colors";
+import HeaderListItem from "./HeaderListItem";
 import { HeaderListStyled } from "./HeaderListStyled";
 
-const HeaderList = ({ language = "en" }) => {
+const HeaderList = ({ language = "en", logOut, isAuth }) => {
+  const exit = () => {
+    logOut();
+  };
   return (
     <HeaderListStyled colors={colors}>
       {mainRoutes.map((headerItem) => (
-        <li key={headerItem.path} className="navigationListItem">
-          <NavLink
-            className="navigationListItemAnchor"
-            activeClassName="activeNavigationListItemAnchor"
-            to={headerItem.path}
-            exact={headerItem.exact}
-          >
-            {headerItem.name[language]}
-          </NavLink>
-        </li>
+        <HeaderListItem {...headerItem} language={language} key={headerItem.path} isAuth={isAuth} />
       ))}
+      {isAuth && <li onClick={exit}>logout</li>}
     </HeaderListStyled>
   );
 };
 
-export default HeaderList;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.idToken,
+  };
+};
+
+export default connect(mapStateToProps, { logOut })(HeaderList);

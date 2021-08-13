@@ -5,7 +5,7 @@ import { signUpOperation, signInOperation } from "../../redux/auth/authOperation
 
 class AuthForm extends Component {
   state = {
-    name: "",
+    email: "",
     password: "",
   };
 
@@ -20,8 +20,7 @@ class AuthForm extends Component {
     e.preventDefault();
     if (this.props.location.pathname === "/register") {
       this.props.signUpOperation(this.state);
-    }
-    this.props.signInOperation(this.state);
+    } else this.props.signInOperation(this.state);
   };
 
   render() {

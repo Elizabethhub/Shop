@@ -8,7 +8,7 @@ const ProductPage = ({ match }) => {
     <ProductPageContainer>
       <ul className="navigationList">
         {productsRoutes.map((route) => (
-          <li className="navigationListItem">
+          <li key={route.path} className="navigationListItem">
             <NavLink
               exact={route.exact}
               className="navigationListItemAnchor"

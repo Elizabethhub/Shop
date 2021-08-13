@@ -15,6 +15,8 @@ const mainRoutes = [
     icon: "",
     component: HomePage,
     exact: true,
+    isPrivate: false,
+    isRestricted: false,
   },
   {
     name: {
@@ -26,6 +28,8 @@ const mainRoutes = [
     icon: "",
     component: ProductsPage,
     exact: false,
+    isPrivate: false,
+    isRestricted: false,
   },
   {
     name: {
@@ -37,17 +41,8 @@ const mainRoutes = [
     icon: "",
     component: CartPage,
     exact: true,
-  },
-  {
-    name: {
-      en: "Registration",
-      ru: "Регистрация",
-      ua: "Реєстрація",
-    },
-    path: "/register",
-    icon: "",
-    component: AuthPage,
-    exact: true,
+    isPrivate: false,
+    isRestricted: false,
   },
   {
     name: {
@@ -59,7 +54,23 @@ const mainRoutes = [
     icon: "",
     component: AdminPage,
     exact: true,
+    isPrivate: true,
+    isRestricted: false,
   },
+  {
+    name: {
+      en: "Registration",
+      ru: "Регистрация",
+      ua: "Реєстрація",
+    },
+    path: "/register",
+    icon: "",
+    component: AuthPage,
+    exact: true,
+    isPrivate: false,
+    isRestricted: true,
+  },
+
   {
     name: {
       en: "Login",
@@ -70,6 +81,8 @@ const mainRoutes = [
     icon: "",
     component: AuthPage,
     exact: true,
+    isPrivate: false,
+    isRestricted: true,
   },
 ];
 export default mainRoutes;
